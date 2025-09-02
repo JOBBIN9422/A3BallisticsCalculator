@@ -1,0 +1,49 @@
+﻿<Window x:Class="A3BallisticsWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:A3BallisticsWPF" xmlns:ScottPlot="clr-namespace:ScottPlot;assembly=ScottPlot.WPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="636" Width="1133">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1">
+                <Label Content="Zero Distance (m)&#xD;&#xA;" Height="26" HorizontalContentAlignment="Right" Margin="0,0,0,5"/>
+                <Label Content="Muzzle Velocity (m/s)&#xD;&#xA;" Height="26" HorizontalContentAlignment="Right" Margin="0,0,0,5"/>
+                <Label Content="Air Friction" Height="26" HorizontalContentAlignment="Right" Margin="0,0,0,5"/>
+                <Label Content="Time Step (sec)" Height="26" HorizontalContentAlignment="Right" Margin="0,0,0,5"/>
+                <Label Content="Chart Step Size (m)&#xD;&#xA;" Height="26" HorizontalContentAlignment="Right"/>
+                <Label Content="Chart Max Range (m)" Height="26" HorizontalContentAlignment="Right" Margin="0,0,0,5"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBox x:Name="ZeroDistTextBox" Text="" TextWrapping="Wrap" Height="26" Margin="0,0,0,5"/>
+                <TextBox x:Name="MuzzleVelTextBox" Text="" TextWrapping="Wrap" Height="26" Margin="0,0,0,5"/>
+                <TextBox x:Name="AirFrictionTextBox" Text="" TextWrapping="Wrap" Height="26" Margin="0,0,0,5"/>
+                <TextBox x:Name="DeltaTTextBox" Text="0.05" TextWrapping="Wrap" Height="26" Margin="0,0,0,5"/>
+                <TextBox x:Name="StepSizeTextBox" Text="25" TextWrapping="Wrap" Height="26" Margin="0,0,0,5"/>
+                <TextBox x:Name="ChartMaxRangeTextBox" Text="500" TextWrapping="Wrap" Height="26" Margin="0,0,0,5"/>
+                <Button x:Name="CalculateButton" Content="Calculate Plot" Click="CalculateButton_Click" Height="26" Margin="0,0,0,5"/>
+                <Button x:Name="ClearPlotButton" Content="Clear Plot" Height="26" Click="ClearPlotButton_Click" Margin="0,0,0,5"/>
+                <Button x:Name="WriteCSVButton" Content="Write CSV" Height="26" Click="WriteCSVButton_Click"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.75*"/>
+                <RowDefinition Height="0.25*"/>
+            </Grid.RowDefinitions>
+            <WpfPlot x:Name="ArcPlot"/>
+            <TextBox x:Name="ResultsTextBox" Text="TextBox" TextWrapping="Wrap" Grid.Row="1"/>
+        </Grid>
+    </Grid>
+</Window>
